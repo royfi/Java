@@ -34,16 +34,16 @@ public class HelloFriends {
 		}
 		output.close();
 
-		/*
-		 * Scanner friendsOutput = null; String fileName = ( name +".txt"); //
-		 * wil naam hier doorgeven, dit gaat alleen niet URGH! try {
-		 * 
-		 * friendsOutput = new Scanner(new File(fileName)); //leest het bestand
-		 * met de naam die eerder ingevoerd is } catch (FileNotFoundException e)
-		 * {
-		 * 
-		 * e.printStackTrace(); }
-		 */
+		Scanner friendsOutput = null;
+		String fileName = (name + ".txt");
+		try {
+
+			friendsOutput = new Scanner(new File(fileName));
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+		}
+
 		input.close();
 
 	}

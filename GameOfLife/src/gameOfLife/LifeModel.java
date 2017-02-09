@@ -1,0 +1,56 @@
+package gameOfLife;
+
+import java.util.Random;
+
+public class LifeModel {
+	public int maxRijen = 22;
+	public int maxKolommen = 32;
+	public boolean[][] matrixGame = new boolean[maxRijen][maxKolommen];
+
+	public void initMatrix() {
+		for (int rij = 0; rij < matrixGame.length; rij++) {
+			for (int kolom = 0; kolom < matrixGame[0].length; kolom++) {
+				Random generator = new Random();
+				boolean boolAlive = true;
+				int checkLeven = (generator.nextInt(10));
+
+				if (checkLeven != 0 || kolom == 0
+						|| kolom == matrixGame[0].length) {
+					boolAlive = false;
+				}
+				matrixGame[rij][kolom] = boolAlive;
+			}
+		}
+	}
+
+	public boolean isLevend(int rij, int kolom) {
+		boolean boolAlive = true;
+		if (matrixGame[rij][kolom] == false) {
+			boolAlive = false;
+		}
+		return boolAlive;
+	}
+
+	public void toon() {
+
+		for (int rij = 1; rij < matrixGame.length - 1; rij++) {
+			String showMatrix = "";
+			for (int kolom = 1; kolom < matrixGame[0].length - 1; kolom++) {
+				if (isLevend(rij, kolom)) {
+					showMatrix += " X";
+				} else
+					showMatrix += " .";
+			}
+			System.out.println(showMatrix);
+
+		}
+	}
+	private int telBuren(int rij, int kolom)
+	{
+		for ( int checkRij = rij -1; checkRij < rij + 1; rij++)
+		{
+			
+		}
+	}
+
+}

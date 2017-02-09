@@ -1,0 +1,61 @@
+package gameOfLife;
+
+import java.util.Random;
+
+public class LifeModel {
+final static boolean[][] MATRIXGAME = new boolean[21][31];
+
+	public static void main(String[] args) {
+		
+		initMatrix();
+		toon();
+		}
+
+	
+
+public static void initMatrix()
+{
+	for (int rij = 0; rij < MATRIXGAME.length; rij++) {
+		for (int kolom = 0; kolom < MATRIXGAME[0].length; kolom++) {
+			Random generator = new Random();
+			boolean boolAlive = true;
+			int checkLeven = (generator.nextInt(10));
+
+			if (checkLeven != 0 || kolom == 0
+					|| kolom == MATRIXGAME[0].length) {
+				boolAlive = false;
+			}
+			MATRIXGAME[rij][kolom] = boolAlive;
+		}
+	}
+}
+	
+	public static boolean isLevend(int rij, int kolom)
+	{
+		boolean boolAlive = true;
+		if(MATRIXGAME[rij][kolom]== false)
+		{
+		boolAlive = false;
+		}
+		return boolAlive;
+	}
+	public static void toon()
+	{
+		
+		for (int rij = 1; rij < MATRIXGAME.length - 1; rij++) {
+			String showMatrix = "";
+			for (int kolom = 1; kolom < MATRIXGAME[0].length -1; kolom++) {
+				if (isLevend(rij,kolom))
+				{
+					 showMatrix += " X";
+				}
+				else
+					showMatrix += " O";
+			}
+			System.out.println(showMatrix);
+			
+			
+		}
+	}
+
+}
